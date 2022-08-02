@@ -6,7 +6,7 @@ exports.up = knex =>
     table
       .integer('note_id')
       .references('id')
-      .inTable('movieNotes')
+      .inTable('reviewNotes')
       .onDelete('CASCADE')
   })
 
