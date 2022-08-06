@@ -19,8 +19,10 @@ class ReviewController {
         user_id
       }
     });
-
-    await knex('tags').insert(tagsInsert);
+    console.log(tags);
+    if (tags.length > 0) {
+      await knex('tags').insert(tagsInsert);
+    }
 
     return response.status(201).json();
   }
