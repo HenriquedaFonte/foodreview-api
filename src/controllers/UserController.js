@@ -32,7 +32,7 @@ class UsersController {
     const { name, password, old_password } = request.body
     const email = request.body.email.toLowerCase()
     const user_id = request.user.id;
-
+    
     const database = await sqliteConnection()
     const user = await database.get('SELECT * FROM users WHERE id = (?)', [user_id])
 
@@ -62,7 +62,7 @@ class UsersController {
       const checkOldPassword = await compare(old_password, user.password)
 
       if(!checkOldPassword) {
-        throw new AppError('Passwords do not match')
+        throw new AppError('Old password do not match')
       }
 
       user.password = await hash(password, 8)
