@@ -19,7 +19,7 @@ class ReviewController {
         user_id
       }
     });
-    console.log(tags);
+
     if (tags.length > 0) {
       await knex('tags').insert(tagsInsert);
     }
