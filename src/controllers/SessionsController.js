@@ -6,8 +6,9 @@ const { sign } = require("jsonwebtoken");
 
 class SessionsController {
   async create(request, response) {
-    const { email, password } = request.body;
-
+    const { password } = request.body;
+    const email = request.body.email.toLowerCase();
+  
     const user = await knex("users").where({ email }).first();
 
     if (!user) {
